@@ -9,7 +9,6 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     //0 -> yellow, 1 -> red
@@ -74,22 +73,23 @@ public class MainActivity extends AppCompatActivity {
                     playAgainLayout.setBackgroundColor(Color.YELLOW);
                     playAgainLayout.setVisibility(View.VISIBLE);
                 }
-            } else {
-                if(isGameOver()){
-                    winnerTextField.setText("Tie");
-                    playAgainLayout.setBackgroundColor(Color.MAGENTA);
-                    playAgainLayout.setVisibility(View.VISIBLE);
-                }
+            }
+        }
+        if(gameActive) {
+            if(isGameOver()){
+                winnerTextField.setText("Tie");
+                playAgainLayout.setBackgroundColor(Color.MAGENTA);
+                playAgainLayout.setVisibility(View.VISIBLE);
             }
         }
     }
 
     private boolean isGameOver(){
-        for ( int counterState : gameState) {
-            if(counterState == 2) {
-                return false;
+            for (int counterState : gameState) {
+                if (counterState == 2) {
+                    return false;
+                }
             }
-        }
         return true;
     }
 
